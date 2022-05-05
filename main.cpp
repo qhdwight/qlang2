@@ -1,5 +1,7 @@
 #include <tao/pegtl.hpp>
 #include <tao/pegtl/contrib/analyze.hpp>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/Function.h>
 #include <llvm/IR/Constants.h>
 #include <algorithm>
 #include <cstdlib>
@@ -86,6 +88,10 @@ int main(int argc, char **argv) {
                   << in.line_at(p) << '\n'
                   << std::setw(p.column) << '^' << '\n';
     }
+
+    llvm::LLVMContext Context;
+    std::unique_ptr<llvm::Module> Owner(new llvm::Module("test", Context));
+    llvm::Module *M = Owner.get();
 
     return EXIT_SUCCESS;
 }

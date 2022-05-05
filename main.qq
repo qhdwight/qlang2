@@ -1,3 +1,14 @@
-fun main {
-    int my_var = 3
-}
+vec3_c comp_t:
+    int_c:
+        x, y, z
+
+player_b bin_t:
+    vec3_c:
+        pos, vel
+
+init_s sys_t:
+    player player_b:
+        pos: 1, 2, 3
+        vel: 3, 4, 5
+
+export: init_s
